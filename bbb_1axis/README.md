@@ -22,6 +22,7 @@ Download `bone-debian-9.5-lxqt-armhf-2018-10-07-4gb.img.xz` or the latest armhf 
 With power off to the BBB, insert the SD card. Provide power to the BBB. The board should automatically boot from the SD card since the Etcher tool makes a bootable drive.
 
 Wait for Windows (or Linux) to recognize the BBB as a network device. Login to the board with ssh (password `temppwd`):
+
     ssh debian@192.168.7.2
 
 ### Expand the drive
@@ -126,7 +127,7 @@ Add the machinekit repository for your distribution (see http://www.machinekit.i
     /etc/apt/sources.list.d/machinekit.list"
     sudo apt-get update
 
-#### install more requirements
+#### Install development requirements
 
     sudo apt-get install libczmq-dev python-zmq libjansson-dev pkg-config \
     libwebsockets-dev python-pyftpdlib cython bwidget lsb-release
@@ -151,14 +152,14 @@ Add the machinekit repository for your distribution (see http://www.machinekit.i
     # and will give hints how to remedy:
     ../scripts/check-system-configuration.sh
 
-If you wish to run this installation by default, add the next lines to your ~/.bashrc file, so that every new terminal is set up correctly for running Machinekit.
+Run the following command to add the command to source this environment by default when launching bash (this will make machinekit available as a command and is also necessary for the step where we install LinuxCNC-EtherCAT support).
 
     echo 'if [ -f ~/machinekit/scripts/rip-environment ]; then
         source ~/machinekit/scripts/rip-environment
         echo "Environment set up for running Machinekit"
     fi' >> ~/.bashrc
 
-Activate this environment either by logging out and back in, or running the source script manually
+Activate this environment either by logging out and back in, or running the source script manually.
 
     source ~/machinekit/scripts/rip-environment
 
@@ -166,13 +167,16 @@ Activate this environment either by logging out and back in, or running the sour
 I installed the EtherCAT master from source because the packages in APT don't work on newer Kernel versions.
 
 Install mercurial
+
     sudo apt install mercurial
 
 Clone the ethercat master
+
     hg clone http://hg.code.sf.net/p/etherlabmaster/code ethercat-hg
     cd ethercat-hg
 
 Get the latest code
+
     hg up tip
 
 Build from sources following the instructions in the `INSTALL` file https://sourceforge.net/p/etherlabmaster/code/ci/default/tree/INSTALL.
@@ -181,13 +185,14 @@ Build from sources following the instructions in the `INSTALL` file https://sour
     ./configure
     make all modules
 
-Switch to root
+Switch to root and install the modules
+
     sudo su
     make modules_install install
     depmod
 
-... and linking the init script and copying the sysconfig file from $PREFIX/etc
-to the appropriate locations and customizing the sysconfig file.
+Link the init script and copy the sysconfig file from $PREFIX/etc
+to the appropriate locations and customizing the sysconfig file. Note that $PREFIX is where you installed etherlab, normally this is `/opt/etherlab`.
 
     ln -s ${PREFIX}/etc/init.d/ethercat /etc/init.d/ethercat
 
@@ -205,6 +210,7 @@ Copy the MAC address and paste into the `/etc/sysconfig/ethercat` file under the
     vi /etc/sysconfig/ethercat
 
 For example, in my case the file looked like
+
     ...
     MASTER0_DEVICE="74:e1:82:86:95:be"
     ...
