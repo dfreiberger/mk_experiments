@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<EtherCATMailbox>
+    <CoE>
+        <InitCmds>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Motor pole pairs]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>19</SubIndex>
+                <Data>03</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Rated current]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>18</SubIndex>
+                <Data>960a0000</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Max current]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>17</SubIndex>
+                <Data>98210000</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Torque constant]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>22</SubIndex>
+                <Data>46000000</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Winding inductance]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>25</SubIndex>
+                <Data>0f00</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Rotor moment of inertia]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>24</SubIndex>
+                <Data>1d000000</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Commutation offset]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>21</SubIndex>
+                <Data>0e01</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Motor thermal time constant]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>45</SubIndex>
+                <Data>7201</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Motor speed limitation]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32785</Index>
+                <SubIndex>27</SubIndex>
+                <Data>eb150000</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Current loop proportional gain]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32784</Index>
+                <SubIndex>19</SubIndex>
+                <Data>b200</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Current loop integral time]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32784</Index>
+                <SubIndex>18</SubIndex>
+                <Data>0500</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Velocity loop proportional gain]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32784</Index>
+                <SubIndex>21</SubIndex>
+                <Data>25000000</Data>
+            </InitCmd>
+            <InitCmd>
+                <Transition>PS</Transition>
+                <Comment><![CDATA[Velocity loop integral time]]></Comment>
+                <Timeout>0</Timeout>
+                <Ccs>1</Ccs>
+                <Index>32784</Index>
+                <SubIndex>20</SubIndex>
+                <Data>96000000</Data>
+            </InitCmd>
+        </InitCmds>
+    </CoE>
+</EtherCATMailbox>
