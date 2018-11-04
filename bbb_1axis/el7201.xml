@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <EtherCATMailbox><CoE>
-
                     <InitCmds>
                         <InitCmd Fixed="true" CompleteAccess="true">
                             <Transition>PS</Transition>
@@ -19,14 +18,6 @@
                             <Index>7187</Index>
                             <SubIndex>0</SubIndex>
                             <Data>0200001a011a</Data>
-                        </InitCmd>
-                        <InitCmd>
-                            <Transition>IP</Transition>
-                            <Timeout>0</Timeout>
-                            <Ccs>1</Ccs>
-                            <Index>61569</Index>
-                            <SubIndex>1</SubIndex>
-                            <Data>36231c00</Data>
                         </InitCmd>
                         <InitCmd>
                             <Transition>PS</Transition>
