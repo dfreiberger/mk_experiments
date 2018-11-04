@@ -1,11 +1,15 @@
 loadrt trivkins
 loadrt tp
 loadrt motmod servo_period_nsec=1000000 num_joints=1 kins=trivkins tp=tp
+loadrt not count=1
 
 loadusr -W lcec_conf ./ethercat_config.xml
 loadrt lcec
 
 addf lcec.read-all servo-thread
+addf motion-command-handler servo-thread
+addf motion-controller servo-thread
+addf not.0 servo-thread
 addf lcec.write-all servo-thread
 
 loadrt scale
@@ -20,7 +24,7 @@ loadrt conv_float_s32
 # Enable button
 # net Xaxis_AF axis.0.amp-enable-out => lcec.0.x.drivecontrol-3
 
-net x-enable => lcec.0.x.drivecontrol-3
+# net x-enable => lcec.0.x.drivecontrol-3
 
 # Feedback and command
 # net Xachse_fb lcec.0.0.pos => axis.0.motor-pos-fb

@@ -1,51 +1,12 @@
 <masters>
-  <master idx="0" appTimePeriod="1000000" refClockSyncCycles="1">
+  <master idx="0" appTimePeriod="1000000" refClockSyncCycles="10">
     <slave idx="0" type="EK1100"/>
     <slave idx="1" type="generic" vid="00000002" pid="A403052" name="abc" />
-    <slave idx="2" type="generic" vid="00000002" pid="1C213052" configPdos="true" name="x">
-	    <initCmds filename="el7201.xml"/> 
-
-      <dcConf assignActivate="730" sync0Cycle="250000" sync0Shift="50000" sync1Cycle="750000" sync1Shift="250000"/>
-      <watchdog divider="2498" intervals="1000"/>
-
-      <syncManager idx="0" dir="out">
-      </syncManager>
-      <syncManager idx="1" dir="in">
-      </syncManager>
-      <syncManager idx="2" dir="out">
-        <pdo idx="1600">
-          <pdoEntry idx="7010" subIdx="01" bitLen="16" halPin="drivecontrol" halType="bit"/>
-        </pdo>
-        <pdo idx="1601">
-          <pdoEntry idx="7010" subIdx="06" bitLen="32" halPin="targetvelocity" halType="s32"/>
-        </pdo>
-        <pdo idx="1606">
-          <!-- Byte 0 -->
-          <pdoEntry idx="7010" subIdx="05" bitLen="32" halPin="targetposition" halType="s32"/>
-        </pdo>
-
-      </syncManager>
-      <syncManager idx="3" dir="in">
-        <pdo idx="1a00">
-          <pdoEntry idx="6000" subIdx="11" bitLen="32" halPin="act_position" halType="s32"/>
-        </pdo>
-        <pdo idx="1a01">
-          <pdoEntry idx="6010" subIdx="1" bitLen="16" halPin="statusword" halType="bit"/>
-        </pdo>
-        <pdo idx="1a02">
-          <pdoEntry idx="6010" subIdx="7" bitLen="32" halPin="act_velocity" halType="s32"/>
-        </pdo>
-        <pdo idx="1a03">
-          <pdoEntry idx="6010" subIdx="8" bitLen="16" halPin="act_torque" halType="s32"/>
-        </pdo>
-  <pdo idx="1a04">
-	            <pdoEntry idx="6010" subIdx="12" bitLen="16" halPin="info_data_1" halType="s32"/>
-		            </pdo>
-			              <pdo idx="1a05">
-					                <pdoEntry idx="6010" subIdx="13" bitLen="16" halPin="info_data_2" halType="s32"/>
-							        </pdo>
-
-      </syncManager>
+    <slave idx="2" type="EL7201" name="x">
+    <initCmds filename="el7201.xml"/>
+    <!-- <dcConf assignActivate="730" sync0Cycle="250000" sync0Shift="50000" sync1Cycle="750000" sync1Shift="250000"/> -->
+    <dcConf assignActivate="700" sync0Cycle="*1" sync0Shift="30000" sync1Cycle="*1" sync1Shift="-1000"/>
+    <watchdog divider="2498" intervals="1000"/>
     </slave>
   </master>
 </masters>
