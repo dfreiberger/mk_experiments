@@ -4,9 +4,8 @@
     <slave idx="1" type="generic" vid="00000002" pid="A403052" name="abc" />
     <slave idx="2" type="EL7201" name="x">
     <initCmds filename="AM8111-xFx0-000x_MDP.xml"/>
-    <!-- <dcConf assignActivate="730" sync0Cycle="250000" sync0Shift="50000" sync1Cycle="750000" sync1Shift="250000"/> -->
-    <dcConf assignActivate="700" sync0Cycle="*1" sync0Shift="30000" sync1Cycle="*1" sync1Shift="-1000"/>
-    <watchdog divider="2498" intervals="1000"/>
+      <dcConf assignActivate="700" sync0Cycle="*1" sync0Shift="30000" sync1Cycle="*1" sync1Shift="-1000"/>
+      <watchdog divider="2498" intervals="1000"/>
     </slave>
   </master>
 </masters>
