@@ -264,35 +264,35 @@ At this point I followed the instructions on https://docs.google.com/document/d/
 
 The final configuration looks like. I took the motor configuration (MDP) from https://download.beckhoff.com/download/config/drives/EL72x1.
 
-    ```xml
-    <masters>
-    <master idx="0" appTimePeriod="1000000" refClockSyncCycles="10">
-        <slave idx="0" type="EK1100"/>
-        <slave idx="1" type="generic" vid="00000002" pid="A403052" name="abc" />
-        <slave idx="2" type="EL7201" name="x">
-        <initCmds filename="AM8111-xFx0-000x_MDP.xml"/>
-            <dcConf assignActivate="700" sync0Cycle="*1" sync0Shift="30000" sync1Cycle="*1" sync1Shift="-1000"/>
-            <watchdog divider="2498" intervals="1000"/>
-        </slave>
-    </master>
-    </masters>
-    ```
+```xml
+<masters>
+<master idx="0" appTimePeriod="1000000" refClockSyncCycles="10">
+    <slave idx="0" type="EK1100"/>
+    <slave idx="1" type="generic" vid="00000002" pid="A403052" name="abc" />
+    <slave idx="2" type="EL7201" name="x">
+    <initCmds filename="AM8111-xFx0-000x_MDP.xml"/>
+        <dcConf assignActivate="700" sync0Cycle="*1" sync0Shift="30000" sync1Cycle="*1" sync1Shift="-1000"/>
+        <watchdog divider="2498" intervals="1000"/>
+    </slave>
+</master>
+</masters>
+```
 
 I set the dcConf from the EL7201 file found in `"C:\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff EL72xx.xml"` or from https://www.beckhoff.com/english.asp?download/elconfg.htm. I am not sure if this is 100% correct yet, but it is working for me.
 
-    ```xml
-    <Dc>
-        <OpMode>
-            <Name>DC</Name>
-            <Desc>DC-Synchron</Desc>
-            <AssignActivate>#x700</AssignActivate>
-            <CycleTimeSync0 Factor="1">0</CycleTimeSync0>
-            <ShiftTimeSync0 Input="0">30000</ShiftTimeSync0>
-            <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
-            <ShiftTimeSync1>1000</ShiftTimeSync1>
-        </OpMode>
-    </Dc>
-    ```
+```xml
+<Dc>
+    <OpMode>
+        <Name>DC</Name>
+        <Desc>DC-Synchron</Desc>
+        <AssignActivate>#x700</AssignActivate>
+        <CycleTimeSync0 Factor="1">0</CycleTimeSync0>
+        <ShiftTimeSync0 Input="0">30000</ShiftTimeSync0>
+        <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
+        <ShiftTimeSync1>1000</ShiftTimeSync1>
+    </OpMode>
+</Dc>
+```
 
 To test this configuration
 
