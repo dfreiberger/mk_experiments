@@ -324,9 +324,12 @@ With a scaling factor of 1 `halcmd getp lcec.0.x.scale`, a velocity command of 1
 ### Reading diagnostic messages
 
 Execute the following command to find out where the latest unacknowledged message is
-ethercat upload -p2 0x10f3 0x02
 
-ethercat upload -p2 0x10f3 0x06 | hexdump -C
+    ethercat upload -p2 0x10f3 0x02
+
+Print out the message at that register. In this case it was at 0x06.
+
+    ethercat upload -p2 0x10f3 0x06 | hexdump -C
 
 The message can be decoded as described in the Beckhoff documentation. Note that the data is stored in little endian format. (See https://download.beckhoff.com/download/document/io/ethercat-terminals/el72x1en.pdf, section 9.1, page 168)
 
