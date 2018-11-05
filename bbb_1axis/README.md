@@ -114,7 +114,7 @@ In my case this command returned:
 > Linux beaglebone 4.1.15-ti-rt-r43 #1 SMP PREEMPT RT Thu Jan 21 20:13:58 UTC 2016  armv7l GNU/Linux
 
 ### Install machinekit from sources
-At this point I was trying to follow the instructions from https://github.com/koppi/mk/blob/master/Machinekit-RT-Preempt-RPI.md, but I was having trouble with locating the machinekit-dev package, so I build and installed it from source following these instructions: http://www.machinekit.io/docs/developing/machinekit-developing/
+At this point I was trying to follow the instructions from https://github.com/koppi/mk/blob/master/Machinekit-RT-Preempt-RPI.md, but I was having trouble with locating the machinekit-dev package, so I built and installed it from source following these instructions: http://www.machinekit.io/docs/developing/machinekit-developing/
 
 This step took almost four hours, I am not sure if it was an issue with disk write speed or memory limitations of the BBB. I believe you can build this in a docker container using the machinekit tools (on a separate PC), which I will try if I have to build it again.
 
@@ -260,7 +260,7 @@ Build and install the library
     sudo make install
 
 ## Setup for EtherCAT slaves
-At this point I followed the instructions on https://docs.google.com/document/d/1GiB065ZIAaoMHPtVfTg9JV1Kn-19xGQl2X9DM9-THNM/edit which showed how to create the ethercat configuration file for a slave. I was able to create a slave configuration for the EL7201 using the "generic" entry, but then I discovered that there was an EL7211 C module, so I modified linuxcnc-ethercat to add support for EL7201, since they have identical commands (the only difference is the part ID in el7201.h).
+At this point I followed the instructions on https://docs.google.com/document/d/1GiB065ZIAaoMHPtVfTg9JV1Kn-19xGQl2X9DM9-THNM/edit which showed how to create the ethercat configuration file for a slave. I was able to create a slave configuration for the EL7201 using the "generic" entry, but then I discovered that there was an EL7211 C module, so I modified linuxcnc-ethercat to add support for EL7201, since they have identical commands (the only difference is the part ID in el7201.h). See https://github.com/dfreiberger/linuxcnc-ethercat/blob/master/src/lcec_el7201.c.
 
 The final configuration looks like. I took the motor configuration (MDP) from https://download.beckhoff.com/download/config/drives/EL72x1.
 
