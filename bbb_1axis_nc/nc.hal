@@ -1,0 +1,83 @@
+###########################################################
+# Master HAL file
+#
+# Description: Drive one axis
+# Author: David Freiberger
+###########################################################
+
+###########################################################
+##### Setup #####
+###########################################################
+# load kinematiks and motion controller
+loadrt trivkins
+
+# load trajectory planner
+loadrt tp
+
+# load motion controller
+loadrt motmod servo_period_nsec=1000000 num_joints=1 kins=trivkins tp=tp
+loadrt not count=1
+
+# load ethercat config
+loadusr -W lcec_conf ./ethercat_config.xml
+
+# load ethercat realtime module
+loadrt lcec
+
+# load position controller PID instance
+loadrt pid names=x-pid
+
+###########################################################
+#### Functions ####
+###########################################################
+addf lcec.read-all servo-thread
+
+addf motion-command-handler servo-thread
+addf motion-controller servo-thread
+
+addf x-pid.do-pid-calcs servo-thread
+
+addf not.0 servo-thread
+
+addf lcec.write-all servo-thread
+
+###########################################################
+#### Servo Controllers
+###########################################################
+
+# set motor velocity scale
+setp lcec.0.x.scale 1.
+
+# map signals
+net x-enable => lcec.0.x.enable
+net x-amp-fault <= lcec.0.x.status-fault
+net x-vel-cmd => lcec.0.x.velo-cmd
+net x-pos-fb <= lcec.0.x.enc-pos
+
+# position controller
+setp x-pid.Pgain [AXIS_0]P
+setp x-pid.Igain [AXIS_0]I
+setp x-pid.Dgain [AXIS_0]D
+setp x-pid.FF0 [AXIS_0]FF0
+setp x-pid.FF1 [AXIS_0]FF1
+setp x-pid.FF2 [AXIS_0]FF2
+setp x-pid.deadband [AXIS_0]DEADBAND
+setp x-pid.maxoutput [AXIS_0]MAX_OUTPUT
+net x-enable => x-pid.enable
+net x-pos-cmd => x-pid.command
+net x-pos-fb => x-pid.feedback
+net x-vel-cmd <= x-pid.output
+
+# axis interface
+net x-enable <= axis.0.amp-enable-out
+net x-amp-fault => axis.0.amp-fault-in
+net x-pos-cmd <= axis.0.motor-pos-cmd
+net x-pos-fb => axis.0.motor-pos-fb
+net x-pos-joint <= axis.0.joint-pos-fb
+net x-homed <= axis.0.homed
+net x-homing <= axis.0.homing
+net x-neg-lim-in => axis.0.neg-lim-sw-in
+net x-pos-lim-in => axis.0.pos-lim-sw-in
+net x-home-sw-in => axis.0.home-sw-in
+
+
