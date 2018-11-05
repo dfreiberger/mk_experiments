@@ -81,3 +81,10 @@ net x-pos-lim-in => axis.0.pos-lim-sw-in
 net x-home-sw-in => axis.0.home-sw-in
 
 
+######################################################################
+# E-Stop Output
+######################################################################
+
+# Request E-Stop Enable from EMC
+net estop-out <= iocontrol.0.user-enable-out
+net estop-out => iocontrol.0.emc-enable-in
